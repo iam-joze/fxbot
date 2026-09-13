@@ -1,0 +1,43 @@
+# Pair configuration: each pair is assigned a volatility class, which determines
+# which timeframes fill the 4 strategy roles (bias / trend_poi / structure_entry / entry).
+#
+# Roles (fixed across all pairs — only the underlying timeframe changes):
+#   bias            - overall directional trend
+#   trend_poi       - confirms trend, may house point-of-interest zones
+#   structure_entry - CHOCH/MSS detection, POI, or entry trigger (context-dependent)
+#   entry           - entry execution, sometimes with CHOCH/MSS confirmation
+
+volatility_classes:
+  low:
+    bias: D1
+    trend_poi: H4
+    structure_entry: H1
+    entry: M15
+  high:
+    bias: H4
+    trend_poi: H1
+    structure_entry: M15
+    entry: M5
+
+pairs:
+  EURUSD:
+    volatility_class: low
+  GBPUSD:
+    volatility_class: low
+  EURCHF:
+    volatility_class: low
+  GBPJPY:
+    volatility_class: high
+  # Add pairs here as needed. volatility_class must match a key under
+  # volatility_classes above.
+
+# Fib zone parameters (from strategy spec)
+fib:
+  premium_discount_split: 0.5
+  poi_band: [0.62, 0.79]  # OTE zone
+
+# Risk parameters (from strategy spec)
+risk:
+  stop_loss_pips_min: 10
+  stop_loss_pips_max: 15
+  take_profit_pip_targets: [30, 50, 100]
