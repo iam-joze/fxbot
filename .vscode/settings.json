@@ -1,0 +1,6 @@
+{
+  "python.analysis.extraPaths": [
+    "/home/jose/.mt5wine64/drive_c/users/jose/AppData/Local/Programs/Python/Python311/Lib/site-packages"
+  ],
+  "python.terminal.useEnvFile": true
+}
